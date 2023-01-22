@@ -39,6 +39,31 @@ section[class="paige-metadata"] {
     position: absolute;
 }
 
+.draft::after {
+    /* Memo emoji */
+    content: " \1F4DD";
+}
+
+.future::after {
+    /* Clock emoji */
+    content: " \1F553";
+}
+
+.expired::after {
+    /* Skull emoji */
+    content: " \1F480";
+}
+
+.draft.future::after {
+    /* Memo + Clock emoji */
+    content: " \1F4DD \1F553";
+}
+
+.draft.expired::after {
+    /* Memo + Skull emoji */
+    content: " \1F4DD \1F480";
+}
+
 {{ with .Site.Params.paige.color_scheme }}
 {{ if eq . "dark" }}
 {{ partial "paige/dark.css" . | safeCSS }}
