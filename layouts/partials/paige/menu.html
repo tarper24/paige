@@ -17,27 +17,40 @@
 {{ else }}
     {{ $pills = true }}
 {{ end }}
-<nav class="justify-content-center my-3 nav {{ if $pills }} nav-pills {{ else if $tabs }} nav-tabs {{ end }}">
-    {{ range .Site.Menus.main }}
-        {{ if .HasChildren }}
-            <div class="dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    {{ .Name }}
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    {{ range .Children }}
+
+<nav class="w-100 navbar navbar-expand-sm flex-sm-column align-items-left">
+    <a class="navbar-brand" href="{{ .Site.BaseURL }}"><h1 class="display-3 fw-bold">{{ .Site.Title | markdownify }}</h1></a>
+    {{ if .Site.Menus.main }}
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="my-3 collapse navbar-collapse navbar-nav" id="navbarNav">
+            <ul class="nav flex-column flex-sm-row w-100 {{ if $pills }} nav-pills {{ else if $tabs }} nav-tabs {{ end }}">
+                {{ range .Site.Menus.main }}
+                    {{ if .HasChildren }}
+                        <li class="dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ .Name }}
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                {{ range .Children }}
+                                    {{ $pagePath := strings.TrimPrefix $basePath $p.RelPermalink }}
+                                    {{ $menuPath := strings.TrimPrefix $basePath .URL }}
+                                    {{ $active := or (and (eq $menuPath `/`) (eq $pagePath `/`)) (and (ne $menuPath `/`) (hasPrefix $pagePath $menuPath)) }}
+                                    <li><a class="dropdown-item {{ if $active }} active {{ if $links }} link-secondary {{ end }} {{ end }}" href="{{ .URL }}" {{ if $active }} aria-current="page" {{ end }}>{{ .Name }}</a></li>
+                                {{ end }}
+                            </ul>
+                        </li>
+                    {{ else }}
                         {{ $pagePath := strings.TrimPrefix $basePath $p.RelPermalink }}
                         {{ $menuPath := strings.TrimPrefix $basePath .URL }}
                         {{ $active := or (and (eq $menuPath `/`) (eq $pagePath `/`)) (and (ne $menuPath `/`) (hasPrefix $pagePath $menuPath)) }}
-                        <li><a class="dropdown-item {{ if $active }} active {{ if $links }} link-secondary {{ end }} {{ end }}" href="{{ .URL }}" {{ if $active }} aria-current="page" {{ end }}>{{ .Name }}</a></li>
+                        <li class="nav-item">
+                            <a href="{{ .URL }}" class="{{ if $active }} active {{ if $links }} link-secondary {{ end }} {{ end }} nav-link" {{ if $active }} aria-current="page" {{ end }}>{{ .Name }}</a>
+                        </li>
                     {{ end }}
-                </ul>
-            </div>
-        {{ else }}
-            {{ $pagePath := strings.TrimPrefix $basePath $p.RelPermalink }}
-            {{ $menuPath := strings.TrimPrefix $basePath .URL }}
-            {{ $active := or (and (eq $menuPath `/`) (eq $pagePath `/`)) (and (ne $menuPath `/`) (hasPrefix $pagePath $menuPath)) }}
-            <a href="{{ .URL }}" class="{{ if $active }} active {{ if $links }} link-secondary {{ end }} {{ end }} nav-link" {{ if $active }} aria-current="page" {{ end }}>{{ .Name }}</a>
-        {{ end }}
+                {{ end }}
+            </ul>
+        </div>
     {{ end }}
 </nav>
