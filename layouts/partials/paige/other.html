@@ -9,6 +9,8 @@
         {{- if and .PublishDate .ReadingTime (not .Params.hide_reading_time ) }} &bullet; {{ end -}}
         {{- if not .Params.hide_reading_time }}{{ with .ReadingTime }}<span title="Estimated read time">{{ . }} min read</span>{{ end -}}{{ end -}}
     </p>
+{{ end }}
+{{ if or .Params.categories .Params.tags }}
     <p class="text-center">
         {{ range $cat_name := .Params.categories }}
             {{ $cat := ($.Site.GetPage (printf "/categories/%s" $cat_name)) }}

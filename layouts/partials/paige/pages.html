@@ -22,7 +22,9 @@
                 {{ range .Pages }}
                     <h3 class="text-center mb-1 {{- if .Draft }} draft {{- end -}} {{- if gt .PublishDate now }} future {{- end -}} {{- if and .ExpiryDate (lt .ExpiryDate now) }} expired {{- end -}}"><a class="link-primary" href="{{ .RelPermalink }}">{{ .Title | markdownify }}</a></h5>
                     {{ partial "paige/other.html" . }}
-                    {{ .Summary }}
+                    <div class="d-flex justify-content-center">
+                        {{ .Summary }}
+                    </div>
                 {{ end }}
             {{ end }}
         </section>
