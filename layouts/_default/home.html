@@ -1,30 +1,34 @@
 {{ define "main" }}
 <article>
-    {{ partial "paige/metadata.html" . }}
-    <section>
-        {{ with .Params.stretch_url }}
-        <div class="mb-3 mw-100 rounded-4 shadow" style="background-image: url('{{ partial `paige/func-url.html` . }}'); background-position: center; background-size: cover; height: 20rem"></div>
-        {{ end }}
-        {{ with .Params.center_url }}
-        <p class="text-center">
-            <img class="mw-100 rounded-4 shadow" fetchpriority="high" referrerpolicy="no-referrer" src="{{ partial `paige/func-url.html` . }}" style="max-height: 20rem">
-        </p>
-        {{ end }}
-        {{ with .Params.greeting }}
-        <p class="display-5 fw-bold h2 text-center">{{ . | markdownify }}</p>
-        {{ end }}
-        {{ with .Params.blurb }}
-        <div class="container-fluid">
-            <div class="justify-content-center row">
-                <div class="col col-auto col-lg-7 px-0">
-                    <p class="lead text-center">{{ . | markdownify }}</p>
+    <div class="align-items-center d-flex flex-column mb-0">
+        {{ partial "paige/metadata.html" . }}
+        {{ if or .Params.stretch_url .Params.center_url .Params.greeting .Params.blurb}}
+            <section>
+                {{ with .Params.stretch_url }}
+                <div class="mb-3 mw-100 rounded-4 shadow" style="background-image: url('{{ partial `paige/func-url.html` . }}'); background-position: center; background-size: cover; height: 20rem"></div>
+                {{ end }}
+                {{ with .Params.center_url }}
+                <p class="text-center">
+                    <img class="mw-100 rounded-4 shadow" fetchpriority="high" referrerpolicy="no-referrer" src="{{ partial `paige/func-url.html` . }}" style="max-height: 20rem">
+                </p>
+                {{ end }}
+                {{ with .Params.greeting }}
+                <p class="display-5 fw-bold h2 text-center">{{ . | markdownify }}</p>
+                {{ end }}
+                {{ with .Params.blurb }}
+                <div class="container-fluid">
+                    <div class="justify-content-center row">
+                        <div class="col col-auto col-lg-7 px-0">
+                            <p class="lead text-center">{{ . | markdownify }}</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+                {{ end }}
+            </section>
         {{ end }}
-    </section>
-    {{ partial "paige/toc.html" . }}
-    {{ partial "paige/content.html" . }}
-    {{ partial "paige/social.html" . }}
+        {{ partial "paige/toc.html" . }}
+        {{ partial "paige/content.html" . }}
+        {{ partial "paige/social.html" . }}
+    </div>
 </article>
 {{ end }}
