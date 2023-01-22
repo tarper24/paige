@@ -1,8 +1,22 @@
 {{ $authors := partial "paige/func-authors.html" . }}
-{{ if or $authors .PublishDate}}
-<p class="text-center text-secondary">
-    {{- with $authors }}{{ . }}{{ end -}}
-    {{- if and $authors .PublishDate }}<br>{{ end -}}
-    {{- with .PublishDate }}<time datetime="{{ .Format `2006-01-02` }}">{{ time.Format (site.Params.paige.date_format | default ":date_long") . }}</time>{{ end -}}
-</p>
+{{ if or $authors .PublishDate .ReadingTime .Params.categories .Params.tags}}
+    <p class="text-center text-secondary mb-0">
+        {{- with $authors }}{{ . }}{{ end -}}
+        {{- if and $authors .PublishDate }}<br>{{ end -}}
+        {{- with .PublishDate }}
+            <time datetime="{{ .Format `2006-01-02` }}">{{ time.Format (site.Params.date_format | default ":date_long") . }}</time>
+        {{ end -}}
+        {{- if and .PublishDate .ReadingTime (not .Params.hide_reading_time ) }} &bullet; {{ end -}}
+        {{- if not .Params.hide_reading_time }}{{ with .ReadingTime }}<span title="Estimated read time">{{ . }} min read</span>{{ end -}}{{ end -}}
+    </p>
+    <p class="text-center">
+        {{ range $cat_name := .Params.categories }}
+            {{ $cat := ($.Site.GetPage (printf "/categories/%s" $cat_name)) }}
+            <span><a class="badge link-secondary text-decoration-none" href="{{ $cat.Permalink }}">{{ . }}</a></span>
+        {{ end }}
+        {{ range $tag_name := .Params.tags }}
+            {{ $tag := ($.Site.GetPage (printf "/tags/%s" $tag_name)) }}
+            <span><a class="badge link-secondary text-decoration-none" href="{{ $tag.Permalink }}">#{{ . }}</a></span>
+        {{ end }}
+    </p>
 {{ end }}
