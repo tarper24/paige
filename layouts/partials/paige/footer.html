@@ -1,11 +1,13 @@
 {{ if or .Site.Copyright (not .Site.Params.paige.hide_theme_link) }}
 <footer>
-    {{ if and .Site.Copyright (not .Site.Params.paige.hide_theme_link) }}
-    <p class="text-center text-secondary">{{ .Site.Copyright | markdownify }} · <a class="link-secondary text-decoration-none" href="https://github.com/willfaught/paige">Paige Theme</a></p>
-    {{ else if .Site.Copyright }}
-    <p class="text-center text-secondary">{{ .Site.Copyright | markdownify }}</p>
-    {{ else if not .Site.Params.paige.hide_theme_link }}
-    <p class="text-center"><a class="link-secondary text-decoration-none" href="https://github.com/willfaught/paige">Paige Theme</a></p>
+    <p class="text-center text-secondary mb-0">
+    {{ if .Site.Copyright }}&copy; {{ now.Format "2006"}} {{ .Site.Copyright | markdownify }}
     {{ end }}
+    </p>
+    <p class="text-center">
+        Built with {{ ":heart:" | emojify }} using <a class="link-secondary text-decoration-none"
+            href="https://gohugo.io/">Hugo</a> & <a class="link-secondary text-decoration-none"
+            href="https://github.com/tarper24/paige">Paige</a>.
+    </p>
 </footer>
 {{ end }}

@@ -1,3 +1,11 @@
+{{ if .Site.Title }}
+
+{{ $class := "display-3" }}
+{{ $title := .Site.Title | markdownify }}
+<h1 class="{{ $class }} fw-bold text-center">{{ $title }}</h1>
+
+{{ end }}
+
 {{ if .Site.Menus.main }}
 <header>
     {{ partial "paige/menu.html" . }}
