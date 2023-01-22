@@ -46,7 +46,7 @@
                         {{ $menuPath := strings.TrimPrefix $basePath .URL }}
                         {{ $active := or (and (eq $menuPath `/`) (eq $pagePath `/`)) (and (ne $menuPath `/`) (hasPrefix $pagePath $menuPath)) }}
                         <li class="nav-item">
-                            <a href="{{ .URL }}" class="{{ if $active }} active {{ if $links }} link-secondary {{ end }} {{ end }} nav-link" {{ if $active }} aria-current="page" {{ end }}>{{ .Name }}</a>
+                            <a href="{{ .URL | safeURL | absURL }}" class="{{ if $active }} active {{ if $links }} link-secondary {{ end }} {{ end }} nav-link" {{ if $active }} aria-current="page" {{ end }}>{{ .Name }}</a>
                         </li>
                     {{ end }}
                 {{ end }}
