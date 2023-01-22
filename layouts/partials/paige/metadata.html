@@ -1,5 +1,7 @@
-<section class="paige-metadata">
-    {{ partial "paige/title.html" . }}
-    {{ partial "paige/description.html" . }}
+<section class="paige-metadata w-100">
+    {{ if not .Params.hide_title }}
+        {{ partial "paige/title.html" . }}
+    {{ end }}
+    {{ partial "paige/subtitle.html" . }}
     {{ partial "paige/other.html" . }}
 </section>
