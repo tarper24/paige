@@ -3,5 +3,12 @@
         {{ partial "paige/metadata.html" . }}
         {{ partial "paige/toc.html" . }}
         {{ partial "paige/content.html" . }}
+        {{ if and .Lastmod .Params.show_lastmod }}
+        <p class="text-center text-secondary">
+            <small>
+                Last modified: <time datetime="{{ .Lastmod.Format `2006-01-02` }}">{{ time.Format (site.Params.date_format | default ":date_long") .Lastmod }}</time>
+            </small>
+        </p>
+        {{ end }}
     </div>
 </article>
