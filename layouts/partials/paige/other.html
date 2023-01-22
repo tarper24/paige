@@ -1,6 +1,6 @@
 {{ $authors := partial "paige/func-authors.html" . }}
 {{ if or $authors .PublishDate .ReadingTime .Params.categories .Params.tags}}
-    <p class="text-center text-secondary mb-0">
+    <p class="text-center text-secondary {{ if or .Params.categories .Params.tags }}mb-0{{ end }}">
         {{- with $authors }}{{ . }}{{ end -}}
         {{- if and $authors .PublishDate }}<br>{{ end -}}
         {{- with .PublishDate }}
