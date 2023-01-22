@@ -9,5 +9,8 @@
             href="https://gohugo.io/">Hugo</a> & <a class="link-secondary text-decoration-none"
             href="https://github.com/tarper24/paige">Paige</a>.
     </p>
+    {{ if templates.Exists "partials/paige/footer-last.html" }}
+        {{ partial "paige/footer-last.html" . }}
+    {{ end }}
 </footer>
 {{ end }}
