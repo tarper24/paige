@@ -4,35 +4,35 @@ A simple Hugo theme. [Try it out.](https://willfaught.com/paige)
 
 ## Screenshots
 
-<img src="https://github.com/willfaught/paige/raw/master/images/screenshot.jpg">
+![Example Site](images/screenshot.jpg)
 
 Home page:
 
-<img src="https://github.com/willfaught/paige/raw/master/images/home.jpg">
+![Home page](images/home.jpg)
 
 List page:
 
-<img src="https://github.com/willfaught/paige/raw/master/images/list.jpg">
+![List page](images/list.jpg)
 
 Single page:
 
-<img src="https://github.com/willfaught/paige/raw/master/images/single.jpg">
+![Single page](images/single.jpg)
 
 Taxonomy page:
 
-<img src="https://github.com/willfaught/paige/raw/master/images/taxonomy.jpg">
+![Taxonomy page](images/taxonomy.jpg)
 
 Term page:
 
-<img src="https://github.com/willfaught/paige/raw/master/images/term.jpg">
+![Term page](images/term.jpg)
 
 404 page:
 
-<img src="https://github.com/willfaught/paige/raw/master/images/404.jpg">
+![404 page](images/404.jpg)
 
 Search page:
 
-<img src="https://github.com/willfaught/paige/raw/master/images/search.jpg">
+![Search page](images/search.jpg)
 
 ## Features
 
@@ -100,14 +100,14 @@ Example `config.yaml`:
 ```yaml
 module:
   imports:
-  - path: "github.com/willfaught/paige"
+  - path: "github.com/tarper24/paige"
 ```
 
 Install:
 
 ```sh
 $ hugo mod init github.com/youraccount/yourproject
-$ hugo mod get github.com/willfaught/paige
+$ hugo mod get github.com/tarper24/paige
 ```
 
 Update:
@@ -128,7 +128,7 @@ Install:
 
 ```sh
 $ cd yourproject
-$ git submodule add https://github.com/willfaught/paige themes/paige
+$ git submodule add https://github.com/tarper24/paige themes/paige
 $ git submodule update --init --recursive --remote
 ```
 
@@ -151,7 +151,7 @@ Install:
 
 ```sh
 $ cd yourproject
-$ git clone https://github.com/willfaught/paige themes/paige
+$ git clone https://github.com/tarper24/paige themes/paige
 $ rm -rf themes/paige/.git
 ```
 
@@ -160,7 +160,7 @@ Update:
 ```sh
 $ cd yourproject
 $ rm -rf themes/paige
-$ git clone https://github.com/willfaught/paige themes/paige
+$ git clone https://github.com/tarper24/paige themes/paige
 $ rm -rf themes/paige/.git
 ```
 
@@ -350,7 +350,7 @@ markup:
     startlevel: 2
 module:
   imports:
-  - path: github.com/willfaught/paige
+  - path: github.com/tarper24/paige
 outputs:
   home:
   - html
@@ -559,13 +559,13 @@ String keys, CSS names, and JavaScript names that begin with "paige" capitalized
 
 ## Community
 
-Get started by [starring](https://github.com/willfaught/paige/stargazers)
-and [following](https://github.com/willfaught/paige/watchers) the project.
+Get started by [starring](https://github.com/tarper24/paige/stargazers)
+and [following](https://github.com/tarper24/paige/watchers) the project.
 
-If you find a problem or have a suggestion, please share it by [creating an issue](https://github.com/willfaught/paige/issues/new).
+If you find a problem or have a suggestion, please share it by [creating an issue](https://github.com/tarper24/paige/issues/new).
 Feedback is encouraged and appreciated.
 
-If you have a fix or improvement, please share it by [creating a pull request](https://github.com/willfaught/paige/compare).
+If you have a fix or improvement, please share it by [creating a pull request](https://github.com/tarper24/paige/compare).
 
 ## Credits
 
@@ -573,6 +573,5 @@ Photo by [Sergey Pesterev](https://unsplash.com/photos/JV78PVf3gGI).
 
 ## Project
 
-Created by [Will Faught](https://willfaught.com).
+Created by [Will Faught](https://willfaught.com). Modified by [tarper24](https://tarper24.net/).\
 Released under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).
-Hosted at https://github.com/willfaught/paige.
