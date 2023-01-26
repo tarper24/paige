@@ -1,0 +1,12 @@
+{{ $bi_icon := "" }}
+
+{{ if eq .Kind "term" }}
+    {{ if eq .Type "tags" }}
+        {{ $bi_icon = (printf "%s%s" $bi_icon "bi-tag") }}
+    {{ end }}
+    {{ if eq .Type "categories" }}
+        {{ $bi_icon = (printf "%s%s" $bi_icon "bi-archive") }}
+    {{ end }}
+{{ end }}
+
+{{ return $bi_icon}}

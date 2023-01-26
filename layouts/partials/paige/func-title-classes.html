@@ -1,0 +1,13 @@
+{{ $title_classes := "" }}
+
+{{ if .Draft }}
+    {{ $title_classes = (printf "%s%s" $title_classes " draft") }}
+{{ end }}
+{{ if and .PublishDate (gt .PublishDate now) }}
+    {{ $title_classes = (printf "%s%s" $title_classes " future") }}
+{{ end }}
+{{ if and .ExpiryDate (lt .ExpiryDate now) }}
+    {{ $title_classes = (printf "%s%s" $title_classes " expired") }}
+{{ end }}
+
+{{ return $title_classes}}
