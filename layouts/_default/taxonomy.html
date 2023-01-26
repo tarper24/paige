@@ -2,13 +2,13 @@
 {{ partial "paige/article.html" . }}
 {{ if .Pages }}
 <section>
-    <ul class="list-inline text-center">
+    <p class="text-center">
         {{ range (sort .Pages "Title") }}
-        <li class="list-inline-item">
-            <a href="{{ .RelPermalink }}">{{ .Title | markdownify }}</a>
-        </li>
+        {{/* TODO: Add icons for taxonomy terms and octothorp for tags, conditionally */}}
+        {{ $term_icon := partial "paige/func-term-icons.html" . }}
+        <span class="badge fs-5 fw-normal text-bg-info"><i class="bi {{ $term_icon }}"> </i><a class="text-bg-info text-decoration-none" href="{{ .RelPermalink }}">{{ .Title | markdownify }}</a></span>
         {{ end }}
-    </ul>
+    </p>
 </section>
 {{ end }}
 {{ end }}

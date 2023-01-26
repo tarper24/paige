@@ -20,7 +20,10 @@
             {{ range $p.PageGroups }}
                 <h2 class="text-center">{{ .Key }}</h3>
                 {{ range .Pages }}
-                    <h3 class="text-center mb-1 {{- if .Draft }} draft {{- end -}} {{- if gt .PublishDate now }} future {{- end -}} {{- if and .ExpiryDate (lt .ExpiryDate now) }} expired {{- end -}}"><a class="link-primary" href="{{ .RelPermalink }}">{{ .Title | markdownify }}</a></h5>
+                    {{ $term_icon := partial "paige/func-term-icons.html" . }}
+                    {{ $title_classes := partial "paige/func-title-classes.html" . }}
+                    <h3 class="text-center mb-1 {{- $title_classes }}">
+                        {{ if $term_icon }}<i class="bi {{ $term_icon }}"> </i>{{ end }}<span><a class="link-primary" href="{{ .RelPermalink }}">{{ .Title | markdownify }}</a></span></h5>
                     {{ partial "paige/other.html" . }}
                     <div class="d-flex justify-content-center">
                         {{ .Summary }}

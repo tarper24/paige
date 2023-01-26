@@ -1,4 +1,11 @@
 {{ if .Title }}
-{{ $title := .Title | markdownify }}
-<h1 class="display-6 fw-bold text-center {{- if .Draft }} draft {{- end -}} {{- if gt .PublishDate now }} future {{- end -}} {{- if and .ExpiryDate (lt .ExpiryDate now) }} expired {{- end -}}">{{ if .Params.link }}<a href="{{ .Params.link }}">{{ $title }}</a>{{ else }}{{ $title }}{{ end }}{{ if .Scratch.Get "paige_show_full_pages" }}<a aria-label="Link to this section" class="paige-header-link" href="{{ .RelPermalink }}">#</a>{{ end }}</h1>
+{{/* TODO: Add icons for taxonomy terms and octothorp for tags, conditionally */}}
+    {{ $title := .Title | markdownify }}
+    {{ $title_classes := partial "paige/func-title-classes.html" . }}
+    {{ $term_icon := partial "paige/func-term-icons.html" . }}
+
+    <h1 class="display-6 fw-bold text-center {{- $title_classes }}">
+        {{ if $term_icon }}<i class="bi {{ $term_icon }}"> </i>{{ end }}
+        <span>{{ if .Params.link }}<a href="{{ .Params.link }}">{{ $title }}</a>{{ else }}{{ $title }}{{ end }}</span>{{ if .Scratch.Get "paige_show_full_pages" }}<a aria-label="Link to this section" class="paige-header-link" href="{{ .RelPermalink }}">#</a>{{ end }}
+    </h1>
 {{ end }}

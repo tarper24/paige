@@ -11,14 +11,15 @@
     </p>
 {{ end }}
 {{ if or .Params.categories .Params.tags }}
-    <p class="text-center">
+    <p class="text-center text-secondary">
         {{ range $cat_name := .Params.categories }}
             {{ $cat := ($.Site.GetPage (printf "/categories/%s" $cat_name)) }}
-            <span><a class="badge link-secondary text-decoration-none" href="{{ $cat.Permalink }}">{{ . }}</a></span>
+            <span class="badge text-bg-info"><i class="bi bi-archive"> </i><a class="text-bg-info text-decoration-none" href="{{ $cat.Permalink }}">{{ . }}</a></span>
         {{ end }}
+        {{ if and .Params.categories .Params.tags }} &vert; {{ end }}
         {{ range $tag_name := .Params.tags }}
             {{ $tag := ($.Site.GetPage (printf "/tags/%s" $tag_name)) }}
-            <span><a class="badge link-secondary text-decoration-none" href="{{ $tag.Permalink }}">#{{ . }}</a></span>
+            <span class="badge text-bg-info"><i class="bi bi-tag"> </i><a class="text-bg-info text-decoration-none" href="{{ $tag.Permalink }}">{{ . }}</a></span>
         {{ end }}
     </p>
 {{ end }}
