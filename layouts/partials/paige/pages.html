@@ -25,7 +25,7 @@
                     <h3 class="text-center mb-1 {{- $title_classes }}">
                         {{ if $term_icon }}<i class="bi {{ $term_icon }}"> </i>{{ end }}<span><a class="link-primary" href="{{ .RelPermalink }}">{{ .Title | markdownify }}</a></span></h5>
                     {{ partial "paige/other.html" . }}
-                    <div class="d-flex justify-content-center">
+                    <div class="d-flex flex-column justify-content-center">
                         {{ .Summary }}
                     </div>
                 {{ end }}
